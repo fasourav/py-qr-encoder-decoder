@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator and Decoder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator & Decoder</h1>
+        
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <h2>Generate QR Code</h2>
+        <form action="/generate_qr" method="POST">
+            <label for="data">Enter data to encode:</label>
+            <input type="text" name="data" id="data" required>
+            <button type="submit">Generate QR Code</button>
+        </form>
+
+        <h2>Decode QR Code</h2>
+        <form action="/decode_qr" method="POST" enctype="multipart/form-data">
+            <label for="qr_image">Upload QR Code image:</label>
+            <input type="file" name="qr_image" id="qr_image" required>
+            <button type="submit">Decode QR Code</button>
+        </form>
+
+        <div class="qr-image">
+            <!-- Placeholder for QR code image display -->
+        </div>
+    </div>
+</body>
+</html>
