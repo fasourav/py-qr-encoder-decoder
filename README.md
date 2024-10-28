@@ -1,3 +1,6 @@
+![Capture](https://github.com/user-attachments/assets/818f4969-c5b5-4a56-9d77-a01090795aff)
+
+
 
 # QR Code Generator & Decoder Web App
 
